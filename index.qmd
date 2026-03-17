@@ -1,6 +1,6 @@
 ---
 title: "Fountain Diet Coke Map"
-subtitle: "Crowd-sourced fountain Diet Coke locations in Santa Barbara, Goleta, and Isla Vista"
+subtitle: "Crowd-sourced fountain Diet Coke locations in Santa Barbara"
 ---
 
 ```{r}
