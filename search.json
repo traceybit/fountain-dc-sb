@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This is a crowd-sourced map of places that serve fountain Diet Coke in the broad Santa Barbara area."
+  },
+  {
+    "objectID": "about.html#what-is-this",
+    "href": "about.html#what-is-this",
+    "title": "About",
+    "section": "",
+    "text": "This is a crowd-sourced map of places that serve fountain Diet Coke in the broad Santa Barbara area."
+  },
+  {
+    "objectID": "about.html#how-does-it-work",
+    "href": "about.html#how-does-it-work",
+    "title": "About",
+    "section": "How does it work?",
+    "text": "How does it work?\n\nAnyone can submit a location using the submission form\nSubmissions are reviewed and added to the map\nVerified locations have been confirmed by a visitor to actually have fountain Diet Coke\nUnverified locations have been submitted but not yet confirmed"
+  },
+  {
+    "objectID": "about.html#how-can-i-help",
+    "href": "about.html#how-can-i-help",
+    "title": "About",
+    "section": "How can I help?",
+    "text": "How can I help?\n\nSubmit a location you know serves fountain Diet Coke\nVerify a location — if you visit a spot on the map, let us know if it checks out!"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nHave questions or feedback? Open an issue on GitHub."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fountain Diet Coke Map",
+    "section": "",
+    "text": "Loading locations…\n\n\n\nKnow a spot with fountain Diet Coke?\nHelp us map it! Submit a location and we’ll add it to the map.\nSubmit a Location"
+  }
+]

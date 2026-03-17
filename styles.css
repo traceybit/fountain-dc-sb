@@ -1,0 +1,85 @@
+/* ---- Color palette ----
+   Diet Coke meets Santa Barbara:
+   - Warm terracotta red: #c1440e (verified markers, accents)
+   - Silver/grey:         #a8a8a8, #d4d4d4 (unverified, subtle backgrounds)
+   - Warm sand:           #f5f0e8 (background tones)
+   - Charcoal:            #2d2d2d (text)
+   - Ocean mist:          #e8eff3 (CTA background)
+*/
+
+/* Navbar override */
+.navbar {
+  background-color: #2d2d2d !important;
+  border-bottom: 3px solid #c1440e;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  color: #f5f0e8 !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #c1440e !important;
+}
+
+/* Page title */
+.title {
+  color: #2d2d2d;
+}
+
+.lead {
+  color: #5a5a5a;
+}
+
+/* Map container */
+#dc-map {
+  height: 550px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Popup styling */
+.leaflet-popup-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.leaflet-popup-content strong {
+  font-size: 15px;
+  color: #2d2d2d;
+}
+
+/* Submit CTA section */
+.submit-cta {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #e8eff3;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.submit-cta h3 {
+  color: #2d2d2d;
+}
+
+.submit-cta .btn {
+  font-size: 1.1rem;
+  padding: 0.6rem 2rem;
+  background-color: #c1440e;
+  border-color: #c1440e;
+  color: #fff;
+}
+
+.submit-cta .btn:hover {
+  background-color: #a03a0c;
+  border-color: #a03a0c;
+}
+
+/* Loading indicator */
+#map-loading {
+  text-align: center;
+  padding: 1rem;
+  color: #8e8e8e;
+  font-style: italic;
+}
