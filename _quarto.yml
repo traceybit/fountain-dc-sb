@@ -1,0 +1,21 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - data/locations.csv
+
+website:
+  title: "Fountain Diet Coke — Santa Barbara"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Map
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    include-in-header:
+      text: '<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>'

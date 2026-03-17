@@ -1,0 +1,23 @@
+---
+title: "About"
+---
+
+## What is this?
+
+This is a crowd-sourced map of places that serve **fountain Diet Coke** in the broad Santa Barbara area.
+
+## How does it work?
+
+- Anyone can submit a location using the [submission form](https://docs.google.com/forms/d/e/1FAIpQLSep4UoqOil2V5x9Mxi1cqu_rlowAbNfmzpCryh0ZZQ1L4LlyQ/viewform){target="_blank"}
+- Submissions are reviewed and added to the map
+- **Verified** locations have been confirmed by a visitor to actually have fountain Diet Coke
+- **Unverified** locations have been submitted but not yet confirmed
+
+## How can I help?
+
+- **Submit a location** you know serves fountain Diet Coke
+- **Verify a location** — if you visit a spot on the map, let us know if it checks out!
+
+## Contact
+
+Have questions or feedback? [Open an issue on GitHub](https://github.com/traceymangin/fountain-dc-sb/issues).
