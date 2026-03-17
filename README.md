@@ -2,7 +2,7 @@
 
 A crowd-sourced interactive map of fountain Diet Coke locations in Santa Barbara (interpreted broadly).
 
-**Live site:** [traceymangin.github.io/fountain-dc-sb](https://traceymangin.github.io/fountain-dc-sb/)
+**Live site:** [https://traceybit.github.io/fountain-dc-sb/](https://traceybit.github.io/fountain-dc-sb/)
 
 ## A note
 
