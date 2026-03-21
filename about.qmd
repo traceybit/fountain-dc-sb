@@ -20,4 +20,4 @@ This is a crowd-sourced map of places that serve **fountain Diet Coke** in the b
 
 ## Contact
 
-Have questions or feedback? [Open an issue on GitHub](https://github.com/traceymangin/fountain-dc-sb/issues).
+Have questions or feedback? Email us at [fountaindcsb@gmail.com](mailto:fountaindcsb@gmail.com) or [open an issue on GitHub](https://github.com/traceymangin/fountain-dc-sb/issues).

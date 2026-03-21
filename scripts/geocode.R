@@ -2,6 +2,11 @@
 # Reads form responses from the published Google Sheet CSV (no auth needed),
 # geocodes addresses, and saves a clean CSV locally for the website to use.
 #
+# Geocoding strategy:
+#   1. Try the full address as submitted
+#   2. If that fails, try "business_name, city, CA" as a fallback
+#   3. If both fail, skip the entry (it still runs, just no marker on the map)
+#
 # Usage: Run this after new form submissions come in.
 #   source("scripts/geocode.R")
 #
@@ -47,30 +52,52 @@ clean <- dat |>
     rating        = .data[[rating_col]],
     review        = .data[[review_col]],
     submitter     = .data[[submitter_col]],
-    full_address  = paste(address, city, "CA", sep = ", ")
+    full_address  = paste(address, city, "CA", sep = ", "),
+    fallback_address = paste(business_name, city, "CA", sep = ", ")
   )
 
-# Geocode all addresses
+# Geocode row by row with fallback logic
 message(sprintf("Geocoding %d row(s)...", nrow(clean)))
 
-geocoded <- clean |>
-  geocode(full_address, method = "osm", lat = latitude, long = longitude)
+results <- list()
 
-# Report results
-n_success <- sum(!is.na(geocoded$latitude))
-n_fail <- sum(is.na(geocoded$latitude))
-message(sprintf("  Geocoded: %d, Failed: %d", n_success, n_fail))
+for (i in seq_len(nrow(clean))) {
+  row <- clean[i, ]
 
-if (n_fail > 0) {
-  failed <- geocoded |> filter(is.na(latitude))
-  message("  Could not geocode:")
-  for (i in seq_len(nrow(failed))) {
-    message(sprintf("    - %s (%s)", failed$business_name[i], failed$full_address[i]))
+  # Attempt 1: full address
+  geo <- tryCatch(
+    row |> geocode(full_address, method = "osm", lat = latitude, long = longitude, quiet = TRUE),
+    error = function(e) row |> mutate(latitude = NA_real_, longitude = NA_real_)
+  )
+
+  # Attempt 2: fallback to business name + city if address failed
+  if (is.na(geo$latitude) || is.na(geo$longitude)) {
+    message(sprintf("  Address failed for '%s', trying business name + city...", row$business_name))
+    geo <- tryCatch(
+      row |> geocode(fallback_address, method = "osm", lat = latitude, long = longitude, quiet = TRUE),
+      error = function(e) row |> mutate(latitude = NA_real_, longitude = NA_real_)
+    )
   }
+
+  if (!is.na(geo$latitude) && !is.na(geo$longitude)) {
+    message(sprintf("  Done: %s -> %.4f, %.4f", row$business_name, geo$latitude, geo$longitude))
+  } else {
+    message(sprintf("  Skipping: could not geocode '%s'", row$business_name))
+  }
+
+  results[[i]] <- geo
 }
 
-# Save clean output locally
+geocoded <- bind_rows(results)
+
+# Report summary
+n_success <- sum(!is.na(geocoded$latitude))
+n_fail <- sum(is.na(geocoded$latitude))
+message(sprintf("Results: %d geocoded, %d skipped", n_success, n_fail))
+
+# Only keep rows with valid coordinates for the output
 output <- geocoded |>
+  filter(!is.na(latitude), !is.na(longitude)) |>
   select(business_name, address, city, latitude, longitude,
          consumed, rating, review, submitter)
 
