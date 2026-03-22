@@ -30,7 +30,7 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet data/locations.csv; then
+          if git diff --quiet -- data/locations.csv 2>/dev/null && ! git ls-files --others --exclude-standard | grep -q "data/locations.csv"; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
