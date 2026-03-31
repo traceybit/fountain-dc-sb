@@ -200,16 +200,19 @@ document.addEventListener("DOMContentLoaded", function() {
                       escapeHtml(row.city || "") + '<br>' +
                       verifiedBadge;
 
-          if (row.rating) {
+          var hasReview = row.review && row.review.trim() && row.review.trim() !== "NA";
+          var hasRating = row.rating && row.rating.trim() && row.rating.trim() !== "NA";
+          var hasSubmitter = row.submitter && row.submitter.trim() && row.submitter.trim() !== "NA";
+
+          if (hasRating) {
             popup += '<br>Rating: ' + escapeHtml(row.rating) + '/5';
           }
 
-          if (row.review && row.review.trim()) {
+          if (hasReview) {
             popup += '<br><br><em>"' + escapeHtml(row.review) + '"</em>';
-          }
-
-          if (row.submitter && row.submitter.trim()) {
-            popup += '<br><small>— ' + escapeHtml(row.submitter) + '</small>';
+            if (hasSubmitter) {
+              popup += '<br><small>— ' + escapeHtml(row.submitter) + '</small>';
+            }
           }
 
           L.circleMarker([lat, lng], {
