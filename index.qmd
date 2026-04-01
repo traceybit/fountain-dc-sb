@@ -42,47 +42,73 @@ document.addEventListener("DOMContentLoaded", function() {
         var locations = results.data;
         var markerCount = 0;
 
-        // The "locations" tab has clean column names from geocode.R:
-        // business_name, address, city, latitude, longitude, consumed, rating, review, submitter
+        // Group locations by business name (case-insensitive)
+        var grouped = {};
         locations.forEach(function(row) {
           var lat = parseFloat(row.latitude);
           var lng = parseFloat(row.longitude);
-
           if (isNaN(lat) || isNaN(lng)) return;
 
-          var consumed = (row.consumed || "").toLowerCase() === "yes";
-          var verifiedBadge = consumed
+          var key = (row.business_name || "").trim().toLowerCase();
+          if (!grouped[key]) {
+            grouped[key] = {
+              business_name: row.business_name,
+              address: row.address,
+              city: row.city,
+              lat: lat,
+              lng: lng,
+              entries: []
+            };
+          }
+          grouped[key].entries.push(row);
+          // If any entry is verified, mark the location as verified
+          if ((row.consumed || "").toLowerCase() === "yes") {
+            grouped[key].verified = true;
+          }
+        });
+
+        // Create one marker per unique location
+        Object.keys(grouped).forEach(function(key) {
+          var loc = grouped[key];
+          var verified = loc.verified || false;
+
+          var verifiedBadge = verified
             ? '<span style="color: #c1440e; font-weight: bold;">&#10003; Verified</span>'
             : '<span style="color: #8e8e8e;">&#63; Unverified</span>';
 
-          var popup = '<strong>' + escapeHtml(row.business_name || "Unknown") + '</strong><br>' +
-                      escapeHtml(row.address || "") + '<br>' +
-                      escapeHtml(row.city || "") + '<br>' +
+          var popup = '<strong>' + escapeHtml(loc.business_name || "Unknown") + '</strong><br>' +
+                      escapeHtml(loc.address || "") + '<br>' +
+                      escapeHtml(loc.city || "") + '<br>' +
                       verifiedBadge;
 
-          var hasReview = row.review && row.review.trim() && row.review.trim() !== "NA";
-          var hasRating = row.rating && row.rating.trim() && row.rating.trim() !== "NA";
-          var hasSubmitter = row.submitter && row.submitter.trim() && row.submitter.trim() !== "NA";
+          // Add each contributor's rating and review
+          loc.entries.forEach(function(entry) {
+            var hasReview = entry.review && entry.review.trim() && entry.review.trim() !== "NA";
+            var hasRating = entry.rating && entry.rating.trim() && entry.rating.trim() !== "NA";
+            var hasSubmitter = entry.submitter && entry.submitter.trim() && entry.submitter.trim() !== "NA";
 
-          if (hasRating) {
-            popup += '<br>Rating: ' + escapeHtml(row.rating) + '/5';
-          }
-
-          if (hasReview) {
-            popup += '<br><br><em>"' + escapeHtml(row.review) + '"</em>';
-            if (hasSubmitter) {
-              popup += '<br><small>— ' + escapeHtml(row.submitter) + '</small>';
+            if (hasRating || hasReview) {
+              popup += '<br><hr style="margin: 6px 0; border-color: #ddd;">';
+              if (hasSubmitter) {
+                popup += '<strong style="font-size: 12px;">' + escapeHtml(entry.submitter) + '</strong><br>';
+              }
+              if (hasRating) {
+                popup += 'Rating: ' + escapeHtml(entry.rating) + '/5<br>';
+              }
+              if (hasReview) {
+                popup += '<em>"' + escapeHtml(entry.review) + '"</em>';
+              }
             }
-          }
+          });
 
-          L.circleMarker([lat, lng], {
+          L.circleMarker([loc.lat, loc.lng], {
             radius: 8,
-            fillColor: consumed ? '#c1440e' : '#a8a8a8',
+            fillColor: verified ? '#c1440e' : '#a8a8a8',
             color: '#fff',
             weight: 2,
             opacity: 1,
             fillOpacity: 0.8
-          }).addTo(map).bindPopup(popup);
+          }).addTo(map).bindPopup(popup, { maxHeight: 250 });
 
           markerCount++;
         });
