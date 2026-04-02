@@ -1,7 +1,7 @@
 business_name,address,city,latitude,longitude,consumed,rating,review,submitter
 SBIFF Riviera Theatre,"2044 Alameda Padre Serra, Santa Barbara, CA 93103",Santa Barbara,34.4389843,-119.7070568,Yes,5,"Great DC, great ambiance!",NA
 In-N-Out,"4865 Calle Real, Goleta, CA 93111",Goleta,34.4429104,-119.7907162,Yes,5,The most classic of Diet Cokes,Jordan
-On the Alley,117 Harbor Way,Santa Barbara,34.4035826,-119.6937093,Yes,5,The machine also has great ice,Lennon Thomas
+On the Alley,117 Harbor Way,Santa Barbara,34.4037939,-119.693449,Yes,5,The machine also has great ice,Lennon Thomas
 SB Pho,"1221 State Street Suite 10, E Victoria St Lot 5, Santa Barbara, CA 93101",Santa Barbara,34.4236506,-119.7058199,Yes,4,Light flavor free refills,NA
 Chick Fil A,3707 State St,Santa Barbara,34.4401384,-119.74297,No,NA,NA,Jasper
 Conserv Fuel,"150 S La Cumbre Rd, Santa Barbara, CA 93105",Santa Barbara,34.4377325,-119.750905,Yes,5,the people who work there are lovely,NA
@@ -12,3 +12,10 @@ Costco,"7095 Market Place Dr, Goleta, CA 93117",Goleta,34.4286016,-119.8737953,Y
 Cal Taco,"7320 Hollister Ave. Goleta, CA 93117",Goleta,34.4303938,-119.882268,Yes,5,NA,NA
 Los Agaves,600 Milpas St.,Santa Barbara,34.427538,-119.686577,Yes,5,NA,NA
 SBIFF Film Center,"916 State St Santa Barbara, CA  93101",Santa Barbara,34.4211273,-119.7008903,Yes,5,Great taste,NA
+McDonald's,3940 State street,Santa Barbara,34.4408562,-119.7530556,Yes,5,One of the best,NA
+Rudy's,138 E Canon Perdido St,Santa Barbara,34.4225063,-119.6983143,No,NA,NA,NA
+Islands,"3825 State St Space E-149, Santa Barbara, CA 93105",Santa Barbara,33.9657952,-120.0918971,Yes,3,"From a soda gun, not the best",NA
+Wendy's,"5724 Hollister Ave, Goleta, CA 93117",Goleta,34.4356059,-119.8249318,Yes,4,"Solid, freestyle machine with Coke Zero option",NA
+Panda Express,"3849 State St, Santa Barbara, CA 93105",Santa Barbara,34.4392011,-119.7491301,Yes,4,"Solid, sometimes they run out but they sell massive sizes",NA
+Wingstop,"3849 State St Suite 163, Santa Barbara, CA 93105",Santa Barbara,34.4393554,-119.7491343,Yes,4,"Solid, freestyle machine options",NA
+Dargan's,"18 E Ortega St, Santa Barbara, CA 93101",Santa Barbara,34.4189799,-119.6972875,Yes,3,"From a soda gun, okay not great",NA
