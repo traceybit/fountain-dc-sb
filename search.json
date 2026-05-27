@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fountain Diet Coke Map",
+    "section": "",
+    "text": "Loading locations…\n\n\n\nKnow a spot with fountain Diet Coke?\nHelp us map it! Submit a location and we’ll add it to the map.\nSubmit a Location"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -33,12 +40,5 @@
     "title": "About",
     "section": "Contact",
     "text": "Contact\nHave questions or feedback? Email us at fountaindcsb@gmail.com or open an issue on GitHub."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Fountain Diet Coke Map",
-    "section": "",
-    "text": "Loading locations…\n\n\n\nKnow a spot with fountain Diet Coke?\nHelp us map it! Submit a location and we’ll add it to the map.\nSubmit a Location"
   }
 ]
